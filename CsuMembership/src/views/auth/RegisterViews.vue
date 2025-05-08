@@ -11,14 +11,12 @@ import RegisterForms from '@/components/auth/RegisterForms.vue'
           <v-card class="mx-auto" elevation="24">
             <v-card-title class="text-center">
               <v-img
-                class="mx-auto"
-                src="images/logo.jpeg"
-                alt="CSU logo"
-                width="100"
-                height="100"
-                cover
-                rounded="circle"
-              ></v-img>
+              class="mx-auto"
+              src="images/logo.jpeg"
+              width="100"
+              height="100"
+              cover
+              rounded="circle"></v-img>
               <h3 class="font-weight-black">CSU Membership</h3>
               <p class="font-weight-bold">Registration Forms</p>
             </v-card-title>
