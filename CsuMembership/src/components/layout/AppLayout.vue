@@ -20,7 +20,6 @@ function onClick() {
            class="custom-btn">
          <v-img
          src="/images/logo.jpeg"
-          alt="Custom Photo"
           width="24"  height="24"/></v-btn>
       </v-app-bar>
 
