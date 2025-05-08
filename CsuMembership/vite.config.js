@@ -17,7 +17,12 @@ export default defineConfig({
     outDir: 'dist', // Make sure this matches Vercel's expected output directory
     emptyOutDir: true,
     sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined
+      }
+    }
   },
   // Add this if your app is not at the root of the domain
-  base: '/',
+  base: './'
 })

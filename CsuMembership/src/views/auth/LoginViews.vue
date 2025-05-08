@@ -12,7 +12,11 @@ function handleLoginSuccess() {
 }
 
 function handleLoginError(error) {
-  loginError.value = error;
+  if (error.includes('Please complete your profile information')) {
+    loginError.value = 'Your profile is incomplete. Please contact the administrator to update your information.';
+  } else {
+    loginError.value = error;
+  }
   loginSuccess.value = false;
 }
 </script>

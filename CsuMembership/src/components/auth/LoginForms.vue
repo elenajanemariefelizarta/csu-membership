@@ -41,6 +41,7 @@
 <script setup>
 import { ref } from 'vue';
 import { supabase } from '@/lib/supabase';
+import { useRouter } from 'vue-router';
 
 const emit = defineEmits(['login-success', 'login-error']);
 
@@ -51,6 +52,8 @@ const email = ref('');
 const password = ref('');
 const emailError = ref('');
 const passwordError = ref('');
+
+const router = useRouter();
 
 // Validation rules
 const emailRules = [
@@ -88,17 +91,32 @@ async function login() {
   
   loading.value = true;
   try {
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
       email: email.value,
       password: password.value
     });
 
-    if (error) throw error;
+    if (authError) throw authError;
 
-    console.log('Logged in successfully:', data);
+    // Fetch user profile data after successful login
+    const { data: profileData, error: profileError } = await supabase
+      .from('users')
+      .select('*')
+      .eq('id', authData.user.id)
+      .single();
+
+    if (profileError) throw profileError;
+
+    // Verify that required profile fields are present
+    if (!profileData.age || !profileData.gender || !profileData.course_year) {
+      throw new Error('Please complete your profile information');
+    }
+
+    console.log('Logged in successfully:', authData);
     emit('login-success');
-    // Redirect to organizations page
-    window.location.href = '/organizations';
+    
+    // Use Vue Router for navigation
+    router.push('/organizations');
   } catch (error) {
     console.error('Error logging in:', error.message);
     emit('login-error', error.message);
