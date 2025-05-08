@@ -13,6 +13,7 @@ import RegisterForms from '@/components/auth/RegisterForms.vue'
               <v-img
                 class="mx-auto"
                 src="images/logo.jpeg"
+                alt="CSU logo"
                 width="100"
                 height="100"
                 cover
