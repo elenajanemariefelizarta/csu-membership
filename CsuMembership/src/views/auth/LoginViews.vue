@@ -15,7 +15,6 @@ import LoginForms from '@/components/auth/LoginForms.vue'
               <v-img
                 class="mx-auto"
                 src="images/logo.jpeg"
-                alt="CSU logo"
                 width="100"
                 height="100"
                 cover
