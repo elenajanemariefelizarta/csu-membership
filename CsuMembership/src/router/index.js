@@ -6,17 +6,24 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      path: '/',
+      redirect: '/login'
+    },
+    {
       path: '/login',
       name: 'Login',
       component: LoginViews
     },
-
     {
       path: '/register',
       name: 'register',
       component: RegisterViews
     },
- 
+    {
+      path: '/organizations',
+      name: 'Organizations',
+      component: () => import('@/views/Organizations.vue')
+    },
   ]
 })
 
