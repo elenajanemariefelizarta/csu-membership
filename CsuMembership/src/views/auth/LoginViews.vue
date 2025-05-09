@@ -162,7 +162,8 @@ function handleLoginError(error) {
 <style scoped>
 .auth-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  /* background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); */
+  background: transparent;
   position: relative;
   overflow: hidden;
 }
@@ -177,6 +178,22 @@ function handleLoginError(error) {
   background: 
     radial-gradient(circle at 20% 20%, rgba(76, 175, 80, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 80% 80%, rgba(76, 175, 80, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Add background image as ::after, behind everything */
+.auth-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/images/background.jpg') no-repeat center center;
+  background-size: cover;
+  opacity: 0.25;
+  z-index: 0;
   pointer-events: none;
 }
 

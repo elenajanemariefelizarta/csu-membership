@@ -116,14 +116,13 @@
           required
         ></v-select>
 
-        <v-select
+        <v-text-field
           v-model="courseYear"
-          label="Course Year"
-          :items="courseYearOptions"
+          label="Program and Year (e.g., BSIT 3rd Year)"
           variant="outlined"
           :rules="courseYearRules"
           required
-        ></v-select>
+        ></v-text-field>
 
         <div class="d-flex flex-column gap-4 mt-6">
           <v-btn
@@ -204,7 +203,6 @@ const courseYear = ref('');
 
 // New options
 const genderOptions = ['Male', 'Female', 'Other'];
-const courseYearOptions = ['1st Year', '2nd Year', '3rd Year', '4th Year', '5th Year'];
 
 // Validation rules
 const nameRules = [
@@ -229,7 +227,7 @@ const passwordRules = [
 const studentIdRules = [
   v => !!v || 'Student ID is required',
   v => v.length <= 9 || 'Student ID must not exceed 9 characters',
-  v => /^[A-Za-z0-9]*$/.test(v) || 'Student ID can only contain letters and numbers'
+  v => /^[A-Za-z0-9\-/,]*$/.test(v) || 'Student ID can only contain numbers'
 ];
 
 const confirmPasswordRules = [
@@ -248,7 +246,7 @@ const genderRules = [
 ];
 
 const courseYearRules = [
-  v => !!v || 'Course Year is required'
+  v => !!v || 'Program and Year is required'
 ];
 
 // Validate student ID format and uniqueness

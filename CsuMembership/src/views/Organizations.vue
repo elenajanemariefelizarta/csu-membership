@@ -66,7 +66,7 @@
                               </div>
                               <div class="d-flex align-center">
                                 <v-icon icon="mdi-school" size="small" class="mr-2"></v-icon>
-                                <span class="text-body-2">Course Year: {{ userProfile?.course_year }}</span>
+                                <span class="text-body-2">Course and Year: {{ userProfile?.course_year }}</span>
                               </div>
                             </div>
                           </v-list-item>
